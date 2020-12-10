@@ -145,6 +145,20 @@ has tonic => (
     default => sub { 1 },
 );
 
+=head2 flat
+
+Whether to use flats instead of sharps in the chords or not.
+
+Default: C<0>
+
+=cut
+
+has flat => (
+    is      => 'ro',
+    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    default => sub { 0 },
+);
+
 =head2 graph
 
 The network transition graph.
@@ -228,6 +242,22 @@ sub generate {
     for my $chord (@phrase) {
         my @chord = $mcn->chord_with_octave($chord, $self->octave);
         push @notes, \@chord;
+    }
+    if ($self->flat) {
+        my %equiv = (
+            'C#' => 'Db',
+            'D#' => 'Eb',
+            'E#' => 'F',
+            'F#' => 'Gb',
+            'G#' => 'Ab',
+            'A#' => 'Bb',
+            'B#' => 'C',
+        );
+        for my $chord (@notes) {
+            for my $note (@$chord) {
+                $note =~ s/^([A-G]#)(\d+)$/$equiv{$1}$2/ if $note =~ /#/;
+            }
+        }
     }
     print 'Notes: ', ddc(\@notes) if $self->verbose;
 
