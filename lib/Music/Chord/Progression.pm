@@ -170,6 +170,20 @@ has resolve => (
     default => sub { 1 },
 );
 
+=head2 substitute
+
+Whether to perform jazz chord substitution.
+
+Default: C<0>
+
+=cut
+
+has substitute => (
+    is      => 'ro',
+    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    default => sub { 0 },
+);
+
 =head2 flat
 
 Whether to use flats instead of sharps in the chords or not.
@@ -261,7 +275,15 @@ sub generate {
 
     my @scale = get_scale_notes($self->scale_note, $self->scale_name);
 
-    my @phrase = map { $scale[$_ - 1] . $self->chords->[$_ - 1] } @progression;
+    my $chords = $self->chords;
+
+    if ($self->substitute) {
+        for my $chord (@$chords) {
+            $chord = int rand 2 ? $self->substitution($chord) : $chord;
+        }
+    }
+
+    my @phrase = map { $scale[$_ - 1] . $chords->[$_ - 1] } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
     # Add octaves to the chord notes
@@ -290,6 +312,48 @@ sub generate {
     print 'Notes: ', ddc(\@notes) if $self->verbose;
 
     return \@notes;
+}
+
+=head2 substitution
+
+Perform a jazz substitution on the given B<chord>.
+
+Rules:
+
+  * Any chord can be changed to a dominant
+
+  * Any dominant chord can be changed to a 9, 11, or 13
+
+  * Any V chord can be changed to a V chord a tritone away
+
+=cut
+
+sub substitution {
+    my ($self, $chord) = @_;
+    my $substitute = $chord;
+    if (
+        $chord eq ''
+        || $chord eq 'm'
+        || $chord eq 'dim'
+        || $chord eq 'aug'
+    ) {
+        $substitute = $chord . 7;
+    }
+    elsif ($chord eq '-5' || $chord eq '-9') {
+        $substitute = "7($chord)";
+    }
+    elsif ($chord eq 'M7') {
+        my $roll = int rand 3;
+        $substitute = $roll == 0 ? 'M9' : $roll == 1 ? 'M11' : 'M13';
+    }
+    elsif ($chord eq '7') {
+        my $roll = int rand 3;
+        $substitute = $roll == 0 ? '9' : $roll == 1 ? '11' : '13';
+    }
+    elsif ($chord eq 'm7') {
+        my $roll = int rand 3;
+        $substitute = $roll == 0 ? 'm9' : $roll == 1 ? 'm11' : 'm13';
+    }
 }
 
 1;
