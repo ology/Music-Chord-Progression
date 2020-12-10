@@ -3,7 +3,7 @@ Revision history for Music-Chord-Progression
 {{$NEXT}}
     - Improve documentation.
     - Add the eg/progression example program.
-    - Add jazz chord substitution.
+    - Add a feeble version of jazz chord substitution.
 
 0.0003 2020-12-10 05:16:34
     - Add the resolve attribute.
