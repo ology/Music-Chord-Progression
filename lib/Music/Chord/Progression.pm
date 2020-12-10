@@ -110,6 +110,8 @@ Alternative example:
 
   [ 'M7', 'm7', 'm7', 'M7', '7', 'm7' ]
 
+The different chord names are listed in the source of L<Music::Scales>.
+
 =cut
 
 has chords => (
