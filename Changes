@@ -1,8 +1,10 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+
+0.0100 2020-12-10 12:29:14
     - Improve documentation.
-    - Bum the major version now.
+    - Bump the major version now.
 
 0.0005 2020-12-10 09:44:54
     - Improve documentation.
