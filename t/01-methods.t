@@ -21,6 +21,7 @@ is_deeply $got->[0], ['B4','D#5','F#5'], 'generate';
 $obj = new_ok 'Music::Chord::Progression' => [
     scale_note => 'Bb',
     flat => 1,
+#    verbose => 1,
 ];
 $got = $obj->generate;
 is_deeply $got->[0], ['Bb4','D5','F5'], 'flat';
