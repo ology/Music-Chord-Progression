@@ -9,12 +9,13 @@ use_ok 'Music::Chord::Progression';
 my $obj = new_ok 'Music::Chord::Progression';
 
 my $got = $obj->generate;
-use Data::Dumper::Compact 'ddc';
-warn(__PACKAGE__,' ',__LINE__," MARK: ",ddc($got));
+is scalar @$got, 8, 'generate';
+is_deeply $got->[0], ['C4','E4','G4'], 'generate';
 
-#my $obj = new_ok 'Music::Chord::Progression' => [
-#    foo => 123,
-#];
-#is $obj->foo, 123, 'foo';
+$obj = new_ok 'Music::Chord::Progression' => [
+    scale_note => 'B',
+];
+$got = $obj->generate;
+is_deeply $got->[0], ['B4','D#5','F#5'], 'generate';
 
 done_testing();
