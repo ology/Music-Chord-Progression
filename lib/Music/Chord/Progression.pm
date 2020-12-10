@@ -326,13 +326,15 @@ Rules:
 
   * Any dominant chord can be changed to a 9, 11, or 13
 
-  * Any chord can be changed to a chord a tritone away
+  * Any chord can be changed to a chord a tritone away (not implemented)
 
 =cut
 
 sub substitution {
     my ($self, $chord) = @_;
+
     my $substitute = $chord;
+
     if (
         $chord eq ''
         || $chord eq 'm'
@@ -356,6 +358,8 @@ sub substitution {
         my $roll = int rand 3;
         $substitute = $roll == 0 ? 'm9' : $roll == 1 ? 'm11' : 'm13';
     }
+
+    return $substitute;
 }
 
 1;
