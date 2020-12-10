@@ -72,7 +72,7 @@ has net => (
     },
 );
 
-=head2 valence
+=head2 chords
 
 The chord name parts of each scale position.
 
@@ -83,7 +83,7 @@ Default: C<[ '', 'm', 'm', '', '', 'm' ]>
 
 =cut
 
-has valence => (
+has chords => (
     is      => 'ro',
     isa     => sub { die "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
     default => sub { ['', 'm', 'm', '', '', 'm'] },
@@ -192,7 +192,7 @@ has verbose => (
   $prog = Music::Chord::Progression->new;
   $prog = Music::Chord::Progression->new(
     net        => { 1 => [...], ... },
-    valence    => ['m','','m','m','',''],
+    chords     => ['m','','m','m','',''],
     scale_name => 'minor',
     scale_note => 'A',
     octave     => 5,
@@ -233,7 +233,7 @@ sub generate {
 
     my @scale = get_scale_notes($self->scale_note, $self->scale_name);
 
-    my @phrase = map { $scale[$_ - 1] . $self->valence->[$_ - 1] } @progression;
+    my @phrase = map { $scale[$_ - 1] . $self->chords->[$_ - 1] } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
     # Add octaves to the chord notes
