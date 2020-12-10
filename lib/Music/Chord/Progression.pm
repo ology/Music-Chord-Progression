@@ -230,15 +230,19 @@ has verbose => (
 
 =head2 new
 
-  $prog = Music::Chord::Progression->new;
+  $prog = Music::Chord::Progression->new; # Use the defaults
 
-  $prog = Music::Chord::Progression->new(
+  $prog = Music::Chord::Progression->new( # Override the defaults
     max        => 4,
     net        => { 1 => [...], ... },
     chords     => ['m','','m','m','',''],
     scale_name => 'minor',
     scale_note => 'A',
     octave     => 5,
+    tonic      => 0,
+    resolve    => 0,
+    substitute => 1,
+    verbose    => 1,
   );
 
 Create a new C<Music::Chord::Progression> object.
