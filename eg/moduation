@@ -12,6 +12,7 @@ my $score = MIDI::Util::setup_score();
 for my $note (qw(A D A E D A)) {
     my $prog = Music::Chord::Progression->new(scale_note => $note);
     my $notes = $prog->generate;
+
     for my $chord (@$notes) {
         $chord = [ MIDI::Util::midi_format(@$chord) ];
         $score->n('wn', @$chord);
