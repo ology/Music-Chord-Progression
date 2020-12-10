@@ -11,6 +11,7 @@ my $score = MIDI::Util::setup_score();
 
 my $prog = Music::Chord::Progression->new(
     chords => [qw(M7 m7 m7 M7 7 m7)],
+    substitute => 1,
 );
 my $notes = $prog->generate;
 
