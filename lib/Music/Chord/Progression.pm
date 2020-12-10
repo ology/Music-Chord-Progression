@@ -215,7 +215,7 @@ sub generate {
             $self->graph->add_edge($posn, $p);
         }
     }
-    print 'Graph: ' . $self->graph if $self->verbose;
+    print 'Graph: ' . $self->graph, "\n" if $self->verbose;
 
     # Create a random progression
     my @progression;
