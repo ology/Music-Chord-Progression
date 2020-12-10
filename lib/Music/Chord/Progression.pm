@@ -148,13 +148,17 @@ has octave => (
 
 Whether to start the progression with the tonic chord or not.
 
+If this is given as C<1> the tonic chord starts the progression.  If
+given as C<0> a neighbor of the tonic is chosen.  If given as C<2> a
+random vertex is chosen.
+
 Default: C<1>
 
 =cut
 
 has tonic => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    isa     => sub { die "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
     default => sub { 1 },
 );
 
@@ -162,13 +166,17 @@ has tonic => (
 
 Whether to end the progression with the tonic chord or not.
 
+If this is given as C<1> the tonic chord ends the progression.  If
+given as C<0> a neighbor of the tonic is chosen.  If given as C<2> a
+random vertex is chosen.
+
 Default: C<1>
 
 =cut
 
 has resolve => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    isa     => sub { die "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
     default => sub { 1 },
 );
 
@@ -271,10 +279,27 @@ sub generate {
     my $v;
     for my $n (1 .. $self->max) {
         if ($n == 1) {
-            $v = $self->tonic ? 1 : (keys %{ $self->net })[int rand keys %{ $self->net }];
+            if ($self->tonic == 0) {
+                $v = (@{ $self->net->{1} })[int rand @{ $self->net->{1} }];
+            }
+            elsif ($self->tonic == 1) {
+                $v = 1;
+            }
+            else {
+                $v = (keys %{ $self->net })[int rand keys %{ $self->net }];
+            }
         }
         elsif ($n == $self->max) {
-            $v = $self->resolve ? 1 : (keys %{ $self->net })[int rand keys %{ $self->net }];
+            my @keys = keys %{ $self->net };
+            if ($self->resolve == 0) {
+                $v = (@{ $self->net->{ scalar @keys } })[int rand @{ $self->net->{ scalar @keys } }];
+            }
+            elsif ($self->resolve == 1) {
+                $v = 1;
+            }
+            else {
+                $v = $keys[int rand @keys];
+            }
         }
         else {
             $v = $self->graph->random_successor($v);
