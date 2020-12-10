@@ -8,7 +8,6 @@ use Data::Dumper::Compact qw(ddc);
 use Graph::Directed;
 use Music::Scales qw(get_scale_notes);
 use Music::Chord::Note;
-
 use Moo;
 use strictures 2;
 use namespace::clean;
