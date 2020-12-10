@@ -88,6 +88,10 @@ number of keys in the B<net>.
 
 Default: C<[ '', 'm', 'm', '', '', 'm' ]>
 
+Alternative example:
+
+  [ 'M7', 'm7', 'm7', 'M7', '7', 'm7' ]
+
 =cut
 
 has chords => (
