@@ -231,7 +231,9 @@ has verbose => (
 =head2 new
 
   $prog = Music::Chord::Progression->new;
+
   $prog = Music::Chord::Progression->new(
+    max        => 4,
     net        => { 1 => [...], ... },
     chords     => ['m','','m','m','',''],
     scale_name => 'minor',
@@ -242,6 +244,8 @@ has verbose => (
 Create a new C<Music::Chord::Progression> object.
 
 =head2 generate
+
+  $notes = $prog->generate;
 
 Generate a new chord progression.
 
@@ -318,7 +322,9 @@ sub generate {
 
 =head2 substitution
 
-Perform a jazz substitution on the given B<chord>.
+  $substitute = $prog->substitution($chord_name);
+
+Perform a jazz substitution on the given the B<chord_name>.
 
 Rules:
 
