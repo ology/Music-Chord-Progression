@@ -106,6 +106,8 @@ number of keys in the B<net>.
 
 Default: C<[ '', 'm', 'm', '', '', 'm' ]>
 
+Here C<''> refers to the major chord and C<'m'> means minor.
+
 Alternative example:
 
   [ 'M7', 'm7', 'm7', 'M7', '7', 'm7' ]
