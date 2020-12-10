@@ -31,7 +31,6 @@ is_deeply $got->[-1], ['Bb4','D5','F5'], 'flat';
 
 $got = $obj->substitution('');
 is $got, '7', 'substitution';
-
 $got = $obj->substitution('m');
 is $got, 'm7', 'substitution';
 
