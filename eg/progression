@@ -15,8 +15,8 @@ my $prog = Music::Chord::Progression->new(
 my $notes = $prog->generate;
 
 for my $chord (@$notes) {
-    $chord = [ MIDI::Util::midi_format(@$chord) ];
-    $score->n('wn', @$chord);
+    my @chord = MIDI::Util::midi_format(@$chord);
+    $score->n('wn', @chord);
 }
 print ddc($notes);
 
