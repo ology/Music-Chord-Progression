@@ -292,6 +292,7 @@ sub generate {
         elsif ($n == $self->max) {
             my @keys = keys %{ $self->net };
             if ($self->resolve == 0) {
+                # XXX This assumes that the net has contiguous keys
                 $v = (@{ $self->net->{ scalar @keys } })[int rand @{ $self->net->{ scalar @keys } }];
             }
             elsif ($self->resolve == 1) {
