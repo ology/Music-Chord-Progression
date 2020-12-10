@@ -145,6 +145,20 @@ has tonic => (
     default => sub { 1 },
 );
 
+=head2 resolve
+
+Whether to end the progression with the tonic chord or not.
+
+Default: C<1>
+
+=cut
+
+has resolve => (
+    is      => 'ro',
+    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    default => sub { 1 },
+);
+
 =head2 flat
 
 Whether to use flats instead of sharps in the chords or not.
@@ -223,10 +237,13 @@ sub generate {
     for my $n (1 .. $self->max) {
         if ($n == 1) {
             $v = $self->tonic ? 1 : (keys %{ $self->net })[int rand keys %{ $self->net }];
-            push @progression, $v;
-            next;
         }
-        $v = $self->graph->random_successor($v);
+        elsif ($n == $self->max) {
+            $v = $self->resolve ? 1 : (keys %{ $self->net })[int rand keys %{ $self->net }];
+        }
+        else {
+            $v = $self->graph->random_successor($v);
+        }
         push @progression, $v;
     }
     print "Progression: @progression\n" if $self->verbose;
