@@ -305,8 +305,7 @@ sub generate {
                 $v = 1;
             }
             else {
-                my @keys = grep { keys @{ $self->net->{$_} } > 0 } keys %{ $self->net };
-                $v = $keys[int rand @keys];
+                $v = $self->_full_keys;
             }
         }
         elsif ($n == $self->max) {
@@ -317,8 +316,7 @@ sub generate {
                 $v = 1;
             }
             else {
-                my @keys = grep { keys @{ $self->net->{$_} } > 0 } keys %{ $self->net };
-                $v = $keys[int rand @keys];
+                $v = $self->_full_keys;
             }
         }
         else {
@@ -367,6 +365,12 @@ sub generate {
     print 'Notes: ', ddc(\@notes) if $self->verbose;
 
     return \@notes;
+}
+
+sub _full_keys {
+    my ($self) = @_;
+    my @keys = grep { keys @{ $self->net->{$_} } > 0 } keys %{ $self->net };
+    return $keys[int rand @keys];
 }
 
 =head2 substitution
