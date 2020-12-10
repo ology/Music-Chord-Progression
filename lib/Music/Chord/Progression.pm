@@ -330,6 +330,7 @@ Rules:
 
 =cut
 
+# These gymnastics are performed to appease Music::Chord::Note
 sub substitution {
     my ($self, $chord) = @_;
 
