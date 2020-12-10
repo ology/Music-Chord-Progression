@@ -27,5 +27,6 @@ $obj = new_ok 'Music::Chord::Progression' => [
 ];
 $got = $obj->generate;
 is_deeply $got->[0], ['Bb4','D5','F5'], 'flat';
+is_deeply $got->[-1], ['Bb4','D5','F5'], 'flat';
 
 done_testing();
