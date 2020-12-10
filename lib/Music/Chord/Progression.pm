@@ -326,7 +326,7 @@ Rules:
 
   * Any dominant chord can be changed to a 9, 11, or 13
 
-  * Any V chord can be changed to a V chord a tritone away
+  * Any chord can be changed to a jazz chord a tritone away
 
 =cut
 
