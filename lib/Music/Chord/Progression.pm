@@ -66,6 +66,21 @@ Alternative example:
     5 => [qw( 1 )],
     6 => [qw( 2 4 )] }
 
+The keys must start with C<1> and end on a number less than or equal
+to C<7>.  If you do not wish a scale note, that is located in the
+middle of the range, to be chosen, include it among the keys, but do
+not refer to it and do not give it any neighbors.
+
+For example, the chord for the 5th degree of the scale will not be
+chosen here, because no key refers to it and it has no neighbors:
+
+  { 1 => [qw( 1 2 3 4 6 7)],
+    2 => [qw( 3 )],
+    3 => [qw( 2 4 6 )],
+    4 => [qw( 1 2 3 )],
+    5 => [],
+    6 => [qw( 2 4 )] }
+
 =cut
 
 has net => (
@@ -286,19 +301,20 @@ sub generate {
                 $v = 1;
             }
             else {
-                $v = (keys %{ $self->net })[int rand keys %{ $self->net }];
+                my @keys = grep { keys @{ $self->net->{$_} } > 0 } keys %{ $self->net };
+                $v = $keys[int rand @keys];
             }
         }
         elsif ($n == $self->max) {
-            my @keys = keys %{ $self->net };
             if ($self->resolve == 0) {
-                # XXX This assumes that the net has contiguous keys
+                my @keys = keys %{ $self->net };
                 $v = (@{ $self->net->{ scalar @keys } })[int rand @{ $self->net->{ scalar @keys } }];
             }
             elsif ($self->resolve == 1) {
                 $v = 1;
             }
             else {
+                my @keys = grep { keys @{ $self->net->{$_} } > 0 } keys %{ $self->net };
                 $v = $keys[int rand @keys];
             }
         }
