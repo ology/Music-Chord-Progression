@@ -23,6 +23,6 @@ $obj = new_ok 'Music::Chord::Progression' => [
     flat => 1,
 ];
 $got = $obj->generate;
-is_deeply $got->[0], ['Bb4','D5','F5'], 'generate';
+is_deeply $got->[0], ['Bb4','D5','F5'], 'flat';
 
 done_testing();
