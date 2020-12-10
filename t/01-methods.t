@@ -39,14 +39,7 @@ is $got, 'm7', 'substitution';
 
 $obj = new_ok 'Music::Chord::Progression' => [
     max => 6,
-    net => {
-        1 => [2],
-        2 => [3],
-        3 => [4],
-        4 => [5],
-        5 => [6],
-        6 => [1],
-    },
+    net => { 1 => [2], 2 => [3], 3 => [4], 4 => [5], 5 => [6], 6 => [1] },
     resolve => 0,
 ];
 $expect = [
