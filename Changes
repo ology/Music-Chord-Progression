@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Improve documentation.
+
+0.0003 2020-12-10 05:16:34
     - Add the resolve attribute.
 
 0.0002 2020-12-10 04:56:27
