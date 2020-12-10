@@ -49,20 +49,20 @@ The network transitions between chords of the progression.
 Default:
 
   { 1 => [qw( 1 2 3 4 5 6 )],
-    2 => [qw( 3 5 )],
-    3 => [qw( 2 4 6 )],
-    4 => [qw( 1 2 3 5 )],
-    5 => [qw( 1 )],
-    6 => [qw( 2 4 )] }
-
-Alternative example:
-
-  { 1 => [qw( 1 2 3 4 5 6 )],
     2 => [qw( 3 4 5 )],
     3 => [qw( 1 2 4 6 )],
     4 => [qw( 1 3 5 6 )],
     5 => [qw( 1 4 6 )],
     6 => [qw( 1 2 4 5 )] }
+
+Alternative example:
+
+  { 1 => [qw( 1 2 3 4 5 6 )],
+    2 => [qw( 3 5 )],
+    3 => [qw( 2 4 6 )],
+    4 => [qw( 1 2 3 5 )],
+    5 => [qw( 1 )],
+    6 => [qw( 2 4 )] }
 
 =cut
 
@@ -70,14 +70,12 @@ has net => (
     is      => 'ro',
     isa     => sub { die "$_[0] is not a hashref" unless ref $_[0] eq 'HASH' },
     default => sub {
-        {
-            1 => [qw(1 2 3 4 5 6)],
-            2 => [qw(3 5)],
-            3 => [qw(2 4 6)],
-            4 => [qw(1 2 3 5)],
-            5 => [qw(1)],
-            6 => [qw(2 4)],
-        };
+      { 1 => [qw( 1 2 3 4 5 6 )],
+        2 => [qw( 3 4 5 )],
+        3 => [qw( 1 2 4 6 )],
+        4 => [qw( 1 3 5 6 )],
+        5 => [qw( 1 4 6 )],
+        6 => [qw( 1 2 4 5 )] }
     },
 );
 
