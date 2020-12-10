@@ -131,9 +131,25 @@ has octave => (
     default => sub { 4 },
 );
 
+=head2 tonic
+
+Whether to start the progression with the tonic chord or not.
+
+Default: C<1>
+
+=cut
+
+has tonic => (
+    is      => 'ro',
+    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    default => sub { 1 },
+);
+
 =head2 graph
 
 The network transition graph.
+
+Default: C<Graph::Directed>
 
 =cut
 
@@ -189,9 +205,13 @@ sub generate {
 
     # Create a random progression
     my @progression;
-    my $v = 1;
-    push @progression, $v;
+    my $v;
     for my $n (1 .. $self->max) {
+        if ($n == 1) {
+            $v = $self->tonic ? 1 : (keys %{ $self->net })[int rand keys %{ $self->net }];
+            push @progression, $v;
+            next;
+        }
         $v = $self->graph->random_successor($v);
         push @progression, $v;
     }
