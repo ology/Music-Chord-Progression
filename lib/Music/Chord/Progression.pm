@@ -79,7 +79,8 @@ chosen here, because no key refers to it and it has no neighbors:
     3 => [qw( 2 4 6 )],
     4 => [qw( 1 2 3 )],
     5 => [],
-    6 => [qw( 2 4 )] }
+    6 => [qw( 2 4 )],
+    7 => [qw( 1 4 )] }
 
 =cut
 
