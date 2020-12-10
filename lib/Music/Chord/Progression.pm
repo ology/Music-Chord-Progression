@@ -19,7 +19,7 @@ use namespace::clean;
 
   my $prog = Music::Chord::Progression->new;
 
-  my $notes = $prog->generate;
+  my $chords = $prog->generate;
 
   my $chord = $prog->substitution('m'); # m7
 
@@ -272,7 +272,7 @@ Create a new C<Music::Chord::Progression> object.
 
 =head2 generate
 
-  $notes = $prog->generate;
+  $chords = $prog->generate;
 
 Generate a new chord progression.
 
