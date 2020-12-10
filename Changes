@@ -3,6 +3,7 @@ Revision history for Music-Chord-Progression
 {{$NEXT}}
     - Improve documentation.
     - Enhance the ->tonic and ->resolve attribute logic.
+    - Add a net test.
 
 0.0004 2020-12-10 08:15:25
     - Improve documentation.
