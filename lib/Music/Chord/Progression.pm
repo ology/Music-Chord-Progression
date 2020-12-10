@@ -21,6 +21,8 @@ use namespace::clean;
 
   my $notes = $prog->generate;
 
+  my $chord = $prog->substitution('m'); # m7
+
 =head1 DESCRIPTION
 
 C<Music::Chord::Progression> creates network transition chord
