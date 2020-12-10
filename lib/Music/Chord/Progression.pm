@@ -425,7 +425,7 @@ __END__
 
 =head1 SEE ALSO
 
-The F<t/01-methods.t> test and the F<eg/*> example files
+The F<t/01-methods.t> test and F<eg/*> example files
 
 L<Data::Dumper::Compact>
 
