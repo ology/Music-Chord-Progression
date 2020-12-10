@@ -299,7 +299,7 @@ sub generate {
     for my $n (1 .. $self->max) {
         if ($n == 1) {
             if ($self->tonic == 0) {
-                $v = (@{ $self->net->{1} })[int rand @{ $self->net->{1} }];
+                $v = $self->graph->random_successor(1);
             }
             elsif ($self->tonic == 1) {
                 $v = 1;
@@ -311,8 +311,7 @@ sub generate {
         }
         elsif ($n == $self->max) {
             if ($self->resolve == 0) {
-                my @keys = keys %{ $self->net };
-                $v = (@{ $self->net->{ scalar @keys } })[int rand @{ $self->net->{ scalar @keys } }];
+                $v = $self->graph->random_successor(scalar keys %{ $self->net });
             }
             elsif ($self->resolve == 1) {
                 $v = 1;
