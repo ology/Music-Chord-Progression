@@ -205,6 +205,14 @@ Whether to perform jazz chord substitution.
 
 Default: C<0>
 
+Rules:
+
+  * Any chord can be changed to a dominant
+
+  * Any dominant chord can be changed to a 9, 11, or 13
+
+  * Any chord can be changed to a chord a tritone away
+
 =cut
 
 has substitute => (
@@ -432,14 +440,6 @@ sub _tt_sub {
   $substitute = $prog->substitution($chord_name);
 
 Perform a jazz substitution on the given the B<chord_name>.
-
-Rules:
-
-  * Any chord can be changed to a dominant
-
-  * Any dominant chord can be changed to a 9, 11, or 13
-
-  * Any chord can be changed to a chord a tritone away
 
 =cut
 
