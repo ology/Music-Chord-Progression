@@ -213,6 +213,21 @@ has substitute => (
     default => sub { 0 },
 );
 
+=head2 sub_cond
+
+The subroutine to execute to determine if a chord substitution should
+happen.
+
+Default: C<sub { int rand 4 == 0 }>
+
+=cut
+
+has sub_cond => (
+    is      => 'ro',
+    isa     => sub { die "$_[0] is not a valid coderef" unless ref($_[0]) eq 'CODE' },
+    default => sub { return sub { int rand 4 == 0 } },
+);
+
 =head2 flat
 
 Whether to use flats instead of sharps in the chords or not.
@@ -333,9 +348,9 @@ sub generate {
     if ($self->substitute) {
         my $i = 0;
         for my $chord (@$chords) {
-            my $substitute = int rand 4 == 0 ? $self->substitution($chord) : $chord;
+            my $substitute = $self->sub_cond->() ? $self->substitution($chord) : $chord;
             if ($substitute eq $chord) {
-                if (int rand 4 == 0) {
+                if ($self->sub_cond->()) {
                     $progression[$i] .= 't';
                 }
             }
