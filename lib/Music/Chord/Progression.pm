@@ -228,7 +228,7 @@ has substitute => (
 The subroutine to execute to determine if a chord substitution should
 happen.
 
-Default: C<sub { int rand 4 == 0 }>
+Default: C<sub { int rand 4 == 0 }> (25% of the time)
 
 =cut
 
