@@ -188,8 +188,8 @@ has tonic => (
 Whether to end the progression with the tonic chord or not.
 
 If this is given as C<1> the tonic chord ends the progression.  If
-given as C<0> a neighbor of the tonic is chosen.  If given as C<-1> a
-random vertex is chosen.
+given as C<0> a neighbor of the last chord is chosen.  If given as
+C<-1> a random vertex is chosen.
 
 Default: C<1>
 
