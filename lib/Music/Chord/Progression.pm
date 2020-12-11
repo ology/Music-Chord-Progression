@@ -98,7 +98,7 @@ has net => (
 
 =head2 chords
 
-The chord name parts of each scale position.
+The chord names of each scale position.
 
 The number of items in this list must be equal and correspond to the
 number of keys in the B<net>.
