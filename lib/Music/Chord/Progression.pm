@@ -409,20 +409,8 @@ sub _full_keys {
 sub _tt_sub {
     my ($self, $scale, $chords, $n) = @_;
 
-    my %tritone = (
-        'C'  => 'F#',
-        'C#' => 'G',
-        'D'  => 'G#',
-        'D#' => 'A',
-        'E'  => 'A#',
-        'F'  => 'B',
-        'F#' => 'C',
-        'G'  => 'C#',
-        'G#' => 'D',
-        'A'  => 'D#',
-        'A#' => 'E',
-        'B'  => 'F',
-    );
+    my @notes = get_scale_notes('C', 'chromatic');
+    my %tritone = map { $notes[$_] => $notes[($_ + 6) % @notes] } 0 .. $#notes;
 
     my $note;
     if ($n =~ /t/) {
