@@ -240,7 +240,7 @@ has sub_cond => (
 
 =head2 flat
 
-Whether to use flats instead of sharps in the chords or not.
+Whether to use flats instead of sharps in the generated chords or not.
 
 Default: C<0>
 
