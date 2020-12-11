@@ -475,6 +475,8 @@ sub substitution {
         $substitute = $roll == 0 ? 'm9' : $roll == 1 ? 'm11' : 'm13';
     }
 
+    print "Sub: $substitute" if $self->verbose && $substitute ne $chord
+
     return $substitute;
 }
 
