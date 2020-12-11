@@ -2,7 +2,7 @@ package Music::Chord::Progression;
 
 # ABSTRACT: Create network transition chord progressions
 
-our $VERSION = '0.0202';
+our $VERSION = '0.0203';
 
 use Data::Dumper::Compact qw(ddc);
 use Graph::Directed;
