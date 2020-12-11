@@ -439,12 +439,11 @@ sub substitution {
 
     my $substitute = $chord;
 
-    if (
-        $chord eq ''
-        || $chord eq 'm'
-        || $chord eq 'dim'
-        || $chord eq 'aug'
-    ) {
+    if ($chord eq '' || $chord eq 'm') {
+        my $roll = int rand 2;
+        $substitute = $roll == 0 ? $chord . 'M7' : $chord . 7;
+    }
+    elsif ($chord eq 'dim' || $chord eq 'aug') {
         $substitute = $chord . 7;
     }
     elsif ($chord eq '-5' || $chord eq '-9') {
