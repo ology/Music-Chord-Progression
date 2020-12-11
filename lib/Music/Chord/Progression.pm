@@ -353,11 +353,9 @@ sub generate {
 
     my @scale = get_scale_notes($self->scale_note, $self->scale_name);
 
-    my $chords = $self->chords;
-
     if ($self->substitute) {
         my $i = 0;
-        for my $chord (@$chords) {
+        for my $chord (@{ $self->chords }) {
             my $substitute = $self->sub_cond->() ? $self->substitution($chord) : $chord;
             if ($substitute eq $chord) {
                 if ($self->sub_cond->()) {
@@ -369,7 +367,7 @@ sub generate {
         }
     }
 
-    my @phrase = map { $self->_tt_sub(\@scale, $chords, $_) } @progression;
+    my @phrase = map { $self->_tt_sub(\@scale, $self->chords, $_) } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
     # Add octaves to the chord notes
