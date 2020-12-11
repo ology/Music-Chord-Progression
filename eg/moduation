@@ -10,7 +10,10 @@ use Music::Chord::Progression;
 my $score = MIDI::Util::setup_score();
 
 for my $note (qw(A D A E D A)) {
-    my $prog = Music::Chord::Progression->new(scale_note => $note);
+    my $prog = Music::Chord::Progression->new(
+        scale_note => $note,
+        substitute => 1,
+    );
     my $notes = $prog->generate;
 
     for my $chord (@$notes) {
