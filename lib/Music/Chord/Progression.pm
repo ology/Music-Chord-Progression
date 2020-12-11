@@ -331,12 +331,20 @@ sub generate {
     my $chords = $self->chords;
 
     if ($self->substitute) {
+        my $i = 0;
         for my $chord (@$chords) {
-            $chord = int rand 2 ? $self->substitution($chord) : $chord;
+            my $substitute = int rand 4 == 0 ? $self->substitution($chord) : $chord;
+            if ($substitute eq $chord) {
+                if (int rand 4 == 0) {
+                    $progression[$i] .= 't';
+                }
+            }
+            $chord = $substitute;
+            $i++;
         }
     }
 
-    my @phrase = map { $scale[$_ - 1] . $chords->[$_ - 1] } @progression;
+    my @phrase = map { $self->_tt_sub(\@scale, $chords, $_) } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
     # Add octaves to the chord notes
@@ -373,6 +381,37 @@ sub _full_keys {
     return $keys[int rand @keys];
 }
 
+sub _tt_sub {
+    my ($self, $scale, $chords, $n) = @_;
+
+    my %tritone = (
+        'C'  => 'F#',
+        'C#' => 'G',
+        'D'  => 'G#',
+        'D#' => 'A',
+        'E'  => 'A#',
+        'F'  => 'B',
+        'F#' => 'C',
+        'G'  => 'C#',
+        'G#' => 'D',
+        'A'  => 'D#',
+        'A#' => 'E',
+        'B'  => 'F',
+    );
+
+    my $note;
+    if ($n =~ /t/) {
+        $n =~ s/t//;
+        $note = $tritone{ $scale->[$n - 1] };
+        print "TT: $scale->[$n - 1] => $note\n" if $self->verbose;
+    }
+    else {
+        $note = $scale->[$n - 1];
+    }
+
+    return $note . $chords->[$n - 1];
+}
+
 =head2 substitution
 
   $substitute = $prog->substitution($chord_name);
@@ -385,7 +424,7 @@ Rules:
 
   * Any dominant chord can be changed to a 9, 11, or 13
 
-  * Any chord can be changed to a chord a tritone away (not implemented)
+  * Any chord can be changed to a chord a tritone away
 
 =cut
 
