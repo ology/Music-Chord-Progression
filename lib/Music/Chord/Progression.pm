@@ -66,9 +66,9 @@ Alternative example:
     6 => [qw( 2 4 )] }
 
 The keys must start with C<1> and end on a number less than or equal
-to C<7>.  If you do not wish a scale note, that is located in the
-middle of the range, to be chosen, include it among the keys, but do
-not refer to it and do not give it any neighbors.
+to C<7>.  If you do not wish a scale note to be chosen, include it
+among the keys, but do not refer to it and do not give it any
+neighbors.
 
 For example, the chord for the 5th degree of the scale will not be
 chosen here, because no key refers to it and it has no neighbors:
