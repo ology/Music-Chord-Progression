@@ -127,6 +127,8 @@ The name of the scale.
 
 Default: C<major>
 
+Please see L<Music::Scales/SCALES> for the allowed scale names.
+
 =cut
 
 has scale_name => (
