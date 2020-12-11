@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Do not overrite the chords attribute in the substitution process.
 
 0.0202 2020-12-11 05:37:22
     - Improve documentation again!
