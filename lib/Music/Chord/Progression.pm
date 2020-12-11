@@ -71,7 +71,7 @@ among the keys, but do not refer to it and do not give it any
 neighbors.
 
 For example, the chord for the 5th degree of the scale will not be
-chosen here, because no key refers to it and it has no neighbors:
+chosen here:
 
   { 1 => [qw( 1 2 3 4 6 7)],
     2 => [qw( 3 )],
