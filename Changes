@@ -1,7 +1,8 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
-    - Clean-up code.
+    - Add tritone substitution.
+    - Add a ->sub_cond code reference attribute.
 
 0.0100 2020-12-10 12:29:14
     - Improve documentation.
