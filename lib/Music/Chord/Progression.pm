@@ -292,7 +292,7 @@ has verbose => (
     scale_note => 'A',
     octave     => 5,
     tonic      => 0,
-    resolve    => 0,
+    resolve    => -1,
     substitute => 1,
     verbose    => 1,
   );
