@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Make sure a progression item is defined before using it.
+    - Add the eg/chromatic program.
 
 0.0301 2020-12-12 05:37:24
     - Add missing prerequisite.
