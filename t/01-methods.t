@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::Exception;
 
 use_ok 'Music::Chord::Progression';
 
@@ -61,5 +62,13 @@ $obj = new_ok 'Music::Chord::Progression' => [
 ];
 $got = $obj->generate;
 ok @$_ > 3, 'sub_cond' for @$got;
+
+# Test invalid chords
+$obj = new_ok 'Music::Chord::Progression' => [
+    chords => [''],
+];
+throws_ok { $obj->generate }
+    qr/chords length must equal number of net keys/, 'invalid chords';
+
 
 done_testing();
