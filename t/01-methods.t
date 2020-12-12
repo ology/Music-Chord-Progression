@@ -60,8 +60,6 @@ $obj = new_ok 'Music::Chord::Progression' => [
     sub_cond => sub { 1 },
 ];
 $got = $obj->generate;
-for my $chord (@$got) {
-    ok @$chord > 3, 'sub_cond';
-}
+ok @$_ > 3, 'sub_cond' for @$got;
 
 done_testing();
