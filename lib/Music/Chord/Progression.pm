@@ -27,7 +27,8 @@ use namespace::clean;
 C<Music::Chord::Progression> creates network transition chord
 progressions.
 
-Also this module can perform limited jazz chord substitutions.
+Also this module can perform limited jazz chord substitutions if
+requested in the constructor.
 
 =head1 ATTRIBUTES
 
