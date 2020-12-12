@@ -6,14 +6,15 @@ use Test::More;
 
 use_ok 'Music::Chord::Progression';
 
+# Test the defaults
 my $obj = new_ok 'Music::Chord::Progression';
-
 my $expect = ['C4','E4','G4'];
 my $got = $obj->generate;
 is scalar @$got, 8, 'generate';
 is_deeply $got->[0], $expect, 'generate';
 is_deeply $got->[-1], $expect, 'generate';
 
+# Test setting a scale note
 $obj = new_ok 'Music::Chord::Progression' => [
     scale_note => 'B',
 ];
@@ -22,6 +23,7 @@ $got = $obj->generate;
 is_deeply $got->[0], $expect, 'generate';
 is_deeply $got->[-1], $expect, 'generate';
 
+# Test flattening the generated phrase
 $obj = new_ok 'Music::Chord::Progression' => [
     scale_note => 'Bb',
     flat => 1,
@@ -32,11 +34,13 @@ $got = $obj->generate;
 is_deeply $got->[0], $expect, 'flat';
 is_deeply $got->[-1], $expect, 'flat';
 
+# Test substitution
 $got = $obj->substitution('');
 ok $got eq 7 || $got eq 'M7', 'substitution';
 $got = $obj->substitution('m');
 ok $got eq 'm7' || $got eq 'mM7', 'substitution';
 
+# Test basic net
 $obj = new_ok 'Music::Chord::Progression' => [
     max => 6,
     net => { 1 => [2], 2 => [3], 3 => [4], 4 => [5], 5 => [6], 6 => [1] },
@@ -49,6 +53,7 @@ $expect = [
 $got = $obj->generate;
 is_deeply $got, $expect, 'generate';
 
+# Always substitute
 $obj = new_ok 'Music::Chord::Progression' => [
     max => 3,
     substitute => 1,
