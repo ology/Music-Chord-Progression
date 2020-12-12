@@ -212,11 +212,15 @@ Default: C<0>
 
 Rules:
 
-  * Any chord can be changed to a dominant
+=over 4
 
-  * Any dominant chord can be changed to a 9, 11, or 13
+=item Any chord can be changed to a dominant
 
-  * Any chord can be changed to a chord a tritone away
+=item Any dominant chord can be changed to a 9, 11, or 13
+
+=item Any chord can be changed to a chord a tritone away
+
+=back
 
 =cut
 
