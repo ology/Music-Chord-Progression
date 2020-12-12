@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Repair the tritone substitution logic.
+
+0.0204 2020-12-11 16:32:07
     - Also substitute M7 chords.
 
 0.0203 2020-12-11 08:15:24
