@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Improve test file.
+    - Croak if given invalid chords/net keys.
 
 0.0303 2020-12-12 14:18:44
     - Improve documentation.
