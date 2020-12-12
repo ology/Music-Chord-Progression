@@ -9,11 +9,15 @@ use Music::Chord::Progression;
 
 my $score = MIDI::Util::setup_score();
 
-my $net = { map { $_ => [1 .. 12] } 1 .. 12 };
+my $n = 12; # Number of chromatic scale notes
+
+my $net = { map { $_ => [1 .. $n] } 1 .. $n };
+
+my $chords = [ ('m') x $n ];
 
 my $prog = Music::Chord::Progression->new(
     net => $net,
-    chords => [ ('m') x 12 ],
+    chords => $chords,
     scale_name => 'chromatic',
     substitute => 1,
     tonic => -1,
