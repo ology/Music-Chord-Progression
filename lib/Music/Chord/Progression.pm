@@ -4,6 +4,7 @@ package Music::Chord::Progression;
 
 our $VERSION = '0.0303';
 
+use Carp qw(croak);
 use Data::Dumper::Compact qw(ddc);
 use Graph::Directed;
 use Music::Scales qw(get_scale_notes);
@@ -316,6 +317,9 @@ Generate a new chord progression.
 
 sub generate {
     my ($self) = @_;
+
+    croak 'chords length must equal number of net keys'
+        unless @{ $self->chords } == keys %{ $self->net };
 
     # Build the graph
     for my $posn (keys %{ $self->net }) {
