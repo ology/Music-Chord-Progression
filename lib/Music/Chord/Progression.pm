@@ -261,7 +261,7 @@ has flat => (
 
 =head2 graph
 
-The network transition graph.
+The network transition L<Graph> object.
 
 Default: C<Graph::Directed>
 
