@@ -410,13 +410,14 @@ sub _full_keys {
 sub _tt_sub {
     my ($self, $scale, $chords, $n) = @_;
 
-    my @fnotes = get_scale_notes('C', 'chromatic', 0, 'b');
-    my @snotes = get_scale_notes('C', 'chromatic');
-    my %ftritone = map { $fnotes[$_] => $fnotes[($_ + 6) % @fnotes] } 0 .. $#fnotes;
-    my %stritone = map { $snotes[$_] => $snotes[($_ + 6) % @snotes] } 0 .. $#snotes;
-
     my $note;
+
     if ($n =~ /t/) {
+        my @fnotes = get_scale_notes('C', 'chromatic', 0, 'b');
+        my @snotes = get_scale_notes('C', 'chromatic');
+        my %ftritone = map { $fnotes[$_] => $fnotes[($_ + 6) % @fnotes] } 0 .. $#fnotes;
+        my %stritone = map { $snotes[$_] => $snotes[($_ + 6) % @snotes] } 0 .. $#snotes;
+
         $n =~ s/t//;
         $note = $ftritone{ $scale->[$n - 1] } || $stritone{ $scale->[$n - 1] };
         print "Tritone: $scale->[$n - 1] => $note\n" if $self->verbose;
