@@ -16,13 +16,13 @@ my $net = { map { $_ => [1 .. $n] } 1 .. $n };
 my $chords = [ ('m') x $n ];
 
 my $prog = Music::Chord::Progression->new(
-    net => $net,
-    chords => $chords,
-    scale_name => 'chromatic',
-    substitute => 1,
-    tonic => -1,
-    resolve => -1,
-    verbose => 1,
+  net        => $net,
+  chords     => $chords,
+  scale_name => 'chromatic',
+  substitute => 1,
+  tonic      => -1,
+  resolve    => -1,
+  verbose    => 1,
 );
 my $notes = $prog->generate;
 
