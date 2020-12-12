@@ -20,7 +20,7 @@ use namespace::clean;
 
   my $chords = $prog->generate;
 
-  my $chord = $prog->substitution('m'); # m7
+  my $chord = $prog->substitution('m'); # m7 or mM7
 
 =head1 DESCRIPTION
 
