@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Improve test file.
+
+0.0303 2020-12-12 14:18:44
     - Improve documentation.
     - Only compute the scale and tritones if we are substituting.
 
