@@ -462,7 +462,7 @@ sub substitution {
         $substitute = $roll == 0 ? 'm9' : $roll == 1 ? 'm11' : 'm13';
     }
 
-    print "Substitute: $chord => $substitute\n" if $self->verbose && $substitute ne $chord;
+    print qq|Substitute: "$chord" => "$substitute"\n| if $self->verbose && $substitute ne $chord;
 
     return $substitute;
 }
