@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Improve documentation.
+    - Only compute the scale and tritones if we are substituting.
 
 0.0302 2020-12-12 11:56:02
     - Make sure a progression item is defined before using it.
