@@ -49,4 +49,14 @@ $expect = [
 $got = $obj->generate;
 is_deeply $got, $expect, 'generate';
 
+$obj = new_ok 'Music::Chord::Progression' => [
+    max => 3,
+    substitute => 1,
+    sub_cond => sub { 1 },
+];
+$got = $obj->generate;
+for my $chord (@$got) {
+    ok @$chord > 3, 'sub_cond';
+}
+
 done_testing();
