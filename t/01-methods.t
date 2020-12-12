@@ -33,9 +33,9 @@ is_deeply $got->[0], $expect, 'flat';
 is_deeply $got->[-1], $expect, 'flat';
 
 $got = $obj->substitution('');
-is $got, '7', 'substitution';
+ok $got eq 7 || $got eq 'M7', 'substitution';
 $got = $obj->substitution('m');
-is $got, 'm7', 'substitution';
+ok $got eq 'm7' || $got eq 'mM7', 'substitution';
 
 $obj = new_ok 'Music::Chord::Progression' => [
     max => 6,
