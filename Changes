@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Add missing prerequisite.
+
+0.0300 2020-12-12 05:33:41
     - Repair the tritone substitution logic.
 
 0.0204 2020-12-11 16:32:07
