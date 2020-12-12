@@ -359,10 +359,8 @@ sub generate {
         my $i = 0;
         for my $chord (@chords) {
             my $substitute = $self->sub_cond->() ? $self->substitution($chord) : $chord;
-            if ($substitute eq $chord) {
-                if ($self->sub_cond->()) {
-                    $progression[$i] .= 't';
-                }
+            if ($substitute eq $chord && $i < @progression && $self->sub_cond->()) {
+                $progression[$i] .= 't';
             }
             $chord = $substitute;
             $i++;
