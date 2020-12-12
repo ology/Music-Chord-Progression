@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Make sure a progression item is defined before using it.
+
+0.0301 2020-12-12 05:37:24
     - Add missing prerequisite.
 
 0.0300 2020-12-12 05:33:41
