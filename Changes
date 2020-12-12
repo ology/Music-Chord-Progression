@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Also substitute M7 chords.
+
+0.0203 2020-12-11 08:15:24
     - Do not overrite the chords attribute in the substitution process.
     - Programmatically build the tritone hash.
     - Fix-up the eg/ programs a bit.
