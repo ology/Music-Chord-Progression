@@ -275,7 +275,7 @@ has graph => (
 
 =head2 verbose
 
-Show the progress of the B<generate> and B<substitution> methods.
+Show B<generate> and B<substitute> progress.
 
 =cut
 
