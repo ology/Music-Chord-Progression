@@ -40,6 +40,8 @@ $got = $obj->substitution('');
 ok $got eq 7 || $got eq 'M7', 'substitution';
 $got = $obj->substitution('m');
 ok $got eq 'm7' || $got eq 'mM7', 'substitution';
+$got = $obj->substitution('7');
+ok $got eq 9 || $got eq 11 || $got eq 13, 'substitution';
 
 # Test basic net
 $obj = new_ok 'Music::Chord::Progression' => [
