@@ -467,7 +467,7 @@ sub _tt_sub {
 
         $n =~ s/t//;
         $note = $ftritone{ $self->scale->[$n - 1] } || $stritone{ $self->scale->[$n - 1] };
-        print "Tritone: $self->scale->[$n - 1] => $note\n" if $self->verbose;
+        print 'Tritone: ', $self->scale->[$n - 1], " => $note\n" if $self->verbose;
     }
     else {
         $note = $self->scale->[$n - 1];
