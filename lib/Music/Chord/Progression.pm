@@ -298,7 +298,7 @@ has verbose => (
 
   $prog = Music::Chord::Progression->new( # Override the defaults
     max        => 4,
-    net        => { 1 => [...], ... },
+    net        => { 1 => [...], ... 6 => [...] },
     chords     => ['m','','m','m','',''],
     scale_name => 'minor',
     scale_note => 'A',
