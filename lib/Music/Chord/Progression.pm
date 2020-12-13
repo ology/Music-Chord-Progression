@@ -492,7 +492,7 @@ The F<t/01-methods.t> test and F<eg/*> example files
 
 L<Data::Dumper::Compact>
 
-L<Graph::Directed>
+L<Graph>
 
 L<Moo>
 
