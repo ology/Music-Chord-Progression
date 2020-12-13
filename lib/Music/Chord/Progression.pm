@@ -155,7 +155,7 @@ Default: C<C>
 
 has scale_note => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid string" if ref $_[0] },
+    isa     => sub { die "$_[0] is not a valid note" unless $_[0] =~ /^[A-G][#b]?$/ },
     default => sub { 'C' },
 );
 
