@@ -273,10 +273,19 @@ Default: C<Graph::Directed>
 =cut
 
 has graph => (
-    is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid graph" unless ref($_[0]) =~ /^Graph/ },
-    default => sub { Graph::Directed->new },
+    is => 'lazy',
 );
+
+sub _build_graph {
+  my ($self) = @_;
+    my $g = Graph::Directed->new;
+    for my $posn (keys %{ $self->net }) {
+        for my $p (@{ $self->net->{$posn} }) {
+            $g->add_edge($posn, $p);
+        }
+    }
+    return $g;
+}
 
 =head2 verbose
 
@@ -325,12 +334,6 @@ sub generate {
     croak 'chords length must equal number of net keys'
         unless @{ $self->chords } == keys %{ $self->net };
 
-    # Build the graph
-    for my $posn (keys %{ $self->net }) {
-        for my $p (@{ $self->net->{$posn} }) {
-            $self->graph->add_edge($posn, $p);
-        }
-    }
     print 'Graph: ' . $self->graph, "\n" if $self->verbose;
 
     # Create a random progression

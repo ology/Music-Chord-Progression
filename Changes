@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Don't re-build the graph every ->generate call.
+
+0.0305 2020-12-12 23:04:38
     - Add a substitution test.
     - Fix-up variable names in the eg/ programs.
     - Improve documentation.
