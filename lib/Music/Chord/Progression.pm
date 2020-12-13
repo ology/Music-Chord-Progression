@@ -338,33 +338,9 @@ sub generate {
 
     # Create a random progression
     my @progression;
-    my $v;
+    my $v; # Vertex
     for my $n (1 .. $self->max) {
-        if ($n == 1) {
-            if ($self->tonic == 0) {
-                $v = $self->graph->random_successor(1);
-            }
-            elsif ($self->tonic == 1) {
-                $v = 1;
-            }
-            else {
-                $v = $self->_full_keys;
-            }
-        }
-        elsif ($n == $self->max) {
-            if ($self->resolve == 0) {
-                $v = $self->graph->random_successor(scalar keys %{ $self->net });
-            }
-            elsif ($self->resolve == 1) {
-                $v = 1;
-            }
-            else {
-                $v = $self->_full_keys;
-            }
-        }
-        else {
-            $v = $self->graph->random_successor($v);
-        }
+        $v = $self->_next_successor($n, $v);
         push @progression, $v;
     }
     print "Progression: @progression\n" if $self->verbose;
@@ -414,6 +390,40 @@ sub generate {
     print 'Notes: ', ddc(\@notes) if $self->verbose;
 
     return \@notes;
+}
+
+sub _next_successor {
+    my ($self, $n, $v) = @_;
+
+    my $s;
+
+    if ($n == 1) {
+        if ($self->tonic == 0) {
+            $s = $self->graph->random_successor(1);
+        }
+        elsif ($self->tonic == 1) {
+            $s = 1;
+        }
+        else {
+            $s = $self->_full_keys;
+        }
+    }
+    elsif ($n == $self->max) {
+        if ($self->resolve == 0) {
+            $s = $self->graph->random_successor(scalar keys %{ $self->net });
+        }
+        elsif ($self->resolve == 1) {
+            $s = 1;
+        }
+        else {
+            $s = $self->_full_keys;
+        }
+    }
+    else {
+        $s = $self->graph->random_successor($v);
+    }
+
+    return $s;
 }
 
 sub _full_keys {
