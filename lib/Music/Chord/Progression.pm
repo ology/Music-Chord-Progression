@@ -365,11 +365,11 @@ sub generate {
     }
     print "Progression: @progression\n" if $self->verbose;
 
-    my @chords = @{ $self->chord_map };
+    my @chord_map = @{ $self->chord_map };
 
     if ($self->substitute) {
         my $i = 0;
-        for my $chord (@chords) {
+        for my $chord (@chord_map) {
             my $substitute = $self->sub_cond->() ? $self->substitution($chord) : $chord;
             if ($substitute eq $chord && $i < @progression && $self->sub_cond->()) {
                 $progression[$i] .= 't'; # Indicate that we should tritone substitute
@@ -379,15 +379,15 @@ sub generate {
         }
     }
 
-    my @phrase = map { $self->_tt_sub(\@chords, $_) } @progression;
+    my @phrase = map { $self->_tt_sub(\@chord_map, $_) } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
-    # Add octaves to the chord notes
+    # Add octaves to the chords
     my $mcn = Music::Chord::Note->new;
-    my @notes;
+    my @chords;
     for my $chord (@phrase) {
         my @chord = $mcn->chord_with_octave($chord, $self->octave);
-        push @notes, \@chord;
+        push @chords, \@chord;
     }
 
     if ($self->flat) {
@@ -400,16 +400,16 @@ sub generate {
             'A#' => 'Bb',
             'B#' => 'C',
         );
-        for my $chord (@notes) {
+        for my $chord (@chords) {
             for my $note (@$chord) {
                 $note =~ s/^([A-G]#)(\d+)$/$equiv{$1}$2/ if $note =~ /#/;
             }
         }
     }
 
-    print 'Notes: ', ddc(\@notes) if $self->verbose;
+    print 'Notes: ', ddc(\@chords) if $self->verbose;
 
-    return \@notes;
+    return \@chords;
 }
 
 sub _next_successor {
@@ -453,7 +453,7 @@ sub _full_keys {
 }
 
 sub _tt_sub {
-    my ($self, $chords, $n) = @_;
+    my ($self, $chord_map, $n) = @_;
 
     my $note;
 
@@ -471,7 +471,7 @@ sub _tt_sub {
         $note = $self->scale->[$n - 1];
     }
 
-    return $note . $chords->[$n - 1];
+    return $note . $chord_map->[$n - 1];
 }
 
 =head2 substitution
