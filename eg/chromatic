@@ -13,20 +13,20 @@ my $n = 12; # Number of chromatic scale notes
 
 my $net = { map { $_ => [1 .. $n] } 1 .. $n };
 
-my $chords = [ ('m') x $n ];
+my $chord_list = [ ('m') x $n ];
 
 my $prog = Music::Chord::Progression->new(
     net        => $net,
-    chords     => $chords,
+    chords     => $chord_list,
     scale_name => 'chromatic',
     substitute => 1,
     tonic      => -1,
     resolve    => -1,
     verbose    => 1,
 );
-my $notes = $prog->generate;
+my $chords = $prog->generate;
 
-for my $chord (@$notes) {
+for my $chord (@$chords) {
     my @chord = MIDI::Util::midi_format(@$chord);
     $score->n('wn', @chord);
 }
