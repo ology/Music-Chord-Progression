@@ -415,6 +415,8 @@ sub generate {
 sub _next_successor {
     my ($self, $n, $v) = @_;
 
+    $v //= 1;
+
     my $s;
 
     if ($n == 1) {
