@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Add a substitution test.
+    - Fix-up variable names in the eg/ programs.
 
 0.0304 2020-12-12 14:54:56
     - Improve test file.
