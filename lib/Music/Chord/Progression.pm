@@ -147,7 +147,7 @@ has scale_name => (
 
 =head2 scale_note
 
-The name of the scale starting note.
+The (uppercase) name of the scale starting note.
 
 Default: C<C>
 
