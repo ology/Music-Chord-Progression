@@ -69,10 +69,13 @@ Alternative example:
     5 => [qw( 1 )],
     6 => [qw( 2 4 )] }
 
-The keys must start with C<1> and end on a number less than or equal
-to C<7>.  If you do not wish a scale note to be chosen, include it
-among the keys, but do not refer to it and do not give it any
-neighbors.
+The keys must start with C<1> and be contiguous to the end.
+
+Ending on C<12> represents all the notes of the chromatic scale, for
+instance.  Ending on C<7> represents the diatonic notes, etc.
+
+If you do not wish a scale note to be chosen, include it among the
+keys, but do not refer to it and do not give it any neighbors.
 
 For example, the chord for the 5th degree of the scale will not be
 chosen here:
