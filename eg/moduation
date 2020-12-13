@@ -11,12 +11,12 @@ use Music::Scales qw(get_scale_notes);
 my $score = MIDI::Util::setup_score();
 
 my @pitches = get_scale_notes('C', 'pentatonic');
-my @notes = map { $pitches[int rand @pitches] } 1 .. 6;
+my @notes = map { $pitches[int rand @pitches] } 1 .. 4;
 
 for my $note (@notes) {
     my $prog = Music::Chord::Progression->new(
         scale_note => $note,
-        substitute => 1,
+#        substitute => 1,
     );
     my $chords = $prog->generate;
 
