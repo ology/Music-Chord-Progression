@@ -490,6 +490,8 @@ __END__
 
 The F<t/01-methods.t> test and F<eg/*> example files
 
+L<Carp>
+
 L<Data::Dumper::Compact>
 
 L<Graph>
