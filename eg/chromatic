@@ -13,11 +13,11 @@ my $n = 12; # Number of chromatic scale notes
 
 my $net = { map { $_ => [1 .. $n] } 1 .. $n };
 
-my $chord_list = [ ('m') x $n ];
+my $chord_map = [ ('m') x $n ];
 
 my $prog = Music::Chord::Progression->new(
     net        => $net,
-    chords     => $chord_list,
+    chord_map  => $chord_map,
     scale_name => 'chromatic',
     substitute => 1,
     tonic      => -1,
