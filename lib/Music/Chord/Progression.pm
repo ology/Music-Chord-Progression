@@ -315,7 +315,7 @@ Create a new C<Music::Chord::Progression> object.
 
   $chords = $prog->generate;
 
-Generate a new chord progression.
+Generate a fresh chord progression.
 
 =cut
 
