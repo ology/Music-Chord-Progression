@@ -389,6 +389,7 @@ sub generate {
         my @chord = $mcn->chord_with_octave($chord, $self->octave);
         push @notes, \@chord;
     }
+
     if ($self->flat) {
         my %equiv = (
             'C#' => 'Db',
@@ -405,6 +406,7 @@ sub generate {
             }
         }
     }
+
     print 'Notes: ', ddc(\@notes) if $self->verbose;
 
     return \@notes;
