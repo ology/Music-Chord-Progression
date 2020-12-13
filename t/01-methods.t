@@ -64,12 +64,12 @@ $obj = new_ok 'Music::Chord::Progression' => [
 $got = $obj->generate;
 ok @$_ > 3, 'sub_cond' for @$got;
 
-# Test invalid chords
+# Test invalid chord_map
 $obj = new_ok 'Music::Chord::Progression' => [
-    chords => [''],
+    chord_map => [''],
 ];
 throws_ok { $obj->generate }
-    qr/chords length must equal number of net keys/, 'invalid chords';
+    qr/chord_map length must equal number of net keys/, 'invalid chord_map';
 
 
 done_testing();

@@ -104,7 +104,7 @@ has net => (
     },
 );
 
-=head2 chords
+=head2 chord_map
 
 The chord names of each scale position.
 
@@ -123,7 +123,7 @@ The different chord names are listed in the source of L<Music::Chord::Note>.
 
 =cut
 
-has chords => (
+has chord_map => (
     is      => 'ro',
     isa     => sub { die "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
     default => sub { ['', 'm', 'm', '', '', 'm'] },
@@ -328,7 +328,7 @@ has verbose => (
   $prog = Music::Chord::Progression->new( # Override the defaults
     max        => 4,
     net        => { 1 => [...], ... 6 => [...] },
-    chords     => ['m','','m','m','',''],
+    chord_map  => ['m','','m','m','',''],
     scale_name => 'minor',
     scale_note => 'A',
     octave     => 5,
@@ -351,8 +351,8 @@ Generate a fresh chord progression.
 sub generate {
     my ($self) = @_;
 
-    croak 'chords length must equal number of net keys'
-        unless @{ $self->chords } == keys %{ $self->net };
+    croak 'chord_map length must equal number of net keys'
+        unless @{ $self->chord_map } == keys %{ $self->net };
 
     print 'Graph: ' . $self->graph, "\n" if $self->verbose;
 
@@ -365,7 +365,7 @@ sub generate {
     }
     print "Progression: @progression\n" if $self->verbose;
 
-    my @chords = @{ $self->chords };
+    my @chords = @{ $self->chord_map };
 
     if ($self->substitute) {
         my $i = 0;

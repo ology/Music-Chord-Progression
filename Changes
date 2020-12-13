@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Change chords attribute name to chord_map.
 
 0.0306 2020-12-12 23:50:13
     - Don't re-build the graph every ->generate call.
