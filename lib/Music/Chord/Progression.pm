@@ -159,6 +159,25 @@ has scale_note => (
     default => sub { 'C' },
 );
 
+=head2 scale
+
+The scale notes.  This is a computed attribute.
+
+Default: C<[C D E F G A B]>
+
+=cut
+
+has scale => (
+    is        => 'lazy',
+    init_args => undef,
+);
+
+sub _build_scale {
+    my ($self) = @_;
+    my @scale = get_scale_notes($self->scale_note, $self->scale_name);
+    return \@scale;
+}
+
 =head2 octave
 
 The octave number of the scale.
@@ -266,14 +285,15 @@ has flat => (
 
 =head2 graph
 
-The network transition L<Graph> object.
+The network transition L<Graph> object.  This is a computed attribute.
 
 Default: C<Graph::Directed>
 
 =cut
 
 has graph => (
-    is => 'lazy',
+    is        => 'lazy',
+    init_args => undef,
 );
 
 sub _build_graph {
@@ -345,8 +365,6 @@ sub generate {
     }
     print "Progression: @progression\n" if $self->verbose;
 
-    my @scale = get_scale_notes($self->scale_note, $self->scale_name);
-
     my @chords = @{ $self->chords };
 
     if ($self->substitute) {
@@ -361,7 +379,7 @@ sub generate {
         }
     }
 
-    my @phrase = map { $self->_tt_sub(\@scale, \@chords, $_) } @progression;
+    my @phrase = map { $self->_tt_sub(\@chords, $_) } @progression;
     print "Phrase: @phrase\n" if $self->verbose;
 
     # Add octaves to the chord notes
@@ -433,7 +451,7 @@ sub _full_keys {
 }
 
 sub _tt_sub {
-    my ($self, $scale, $chords, $n) = @_;
+    my ($self, $chords, $n) = @_;
 
     my $note;
 
@@ -444,11 +462,11 @@ sub _tt_sub {
         my %stritone = map { $snotes[$_] => $snotes[($_ + 6) % @snotes] } 0 .. $#snotes;
 
         $n =~ s/t//;
-        $note = $ftritone{ $scale->[$n - 1] } || $stritone{ $scale->[$n - 1] };
-        print "Tritone: $scale->[$n - 1] => $note\n" if $self->verbose;
+        $note = $ftritone{ $self->scale->[$n - 1] } || $stritone{ $self->scale->[$n - 1] };
+        print "Tritone: $self->scale->[$n - 1] => $note\n" if $self->verbose;
     }
     else {
-        $note = $scale->[$n - 1];
+        $note = $self->scale->[$n - 1];
     }
 
     return $note . $chords->[$n - 1];
