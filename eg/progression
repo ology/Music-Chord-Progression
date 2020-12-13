@@ -15,9 +15,9 @@ my $prog = Music::Chord::Progression->new(
 #    resolve => 0,
     verbose => 1,
 );
-my $notes = $prog->generate;
+my $chords = $prog->generate;
 
-for my $chord (@$notes) {
+for my $chord (@$chords) {
     my @chord = MIDI::Util::midi_format(@$chord);
     $score->n('wn', @chord);
 }
