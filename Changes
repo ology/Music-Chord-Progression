@@ -1,7 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
-    - Fix code.
+    - Fix verbose mode code.
 
 0.0400 2020-12-13 06:45:20
     - Change chords attribute name to chord_map.
