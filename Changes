@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Don't re-build the graph every ->generate call.
+    - Don't re-create the scale every ->generate call.
 
 0.0305 2020-12-12 23:04:38
     - Add a substitution test.
