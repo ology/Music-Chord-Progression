@@ -17,9 +17,9 @@ is_deeply $got->[-1], $expect, 'generate';
 
 # Test setting a scale note
 $obj = new_ok 'Music::Chord::Progression' => [
-    scale_note => 'B',
+    scale_note => 'Bb',
 ];
-$expect = ['B4','D#5','F#5'];
+$expect = ['A#4','D5','F5'];
 $got = $obj->generate;
 is_deeply $got->[0], $expect, 'generate';
 is_deeply $got->[-1], $expect, 'generate';
