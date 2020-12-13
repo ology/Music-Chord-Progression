@@ -407,7 +407,7 @@ sub generate {
         }
     }
 
-    print 'Notes: ', ddc(\@chords) if $self->verbose;
+    print 'Chords: ', ddc(\@chords) if $self->verbose;
 
     return \@chords;
 }
