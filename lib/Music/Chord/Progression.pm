@@ -72,7 +72,7 @@ Alternative example:
 The keys must start with C<1> and be contiguous to the end.
 
 Ending on C<12> represents all the notes of the chromatic scale, for
-instance.  Ending on C<7> represents the diatonic notes, etc.
+instance.  Ending on C<7> can represent the diatonic notes, etc.
 
 If you do not wish a scale note to be chosen, include it among the
 keys, but do not refer to it and do not give it any neighbors.
