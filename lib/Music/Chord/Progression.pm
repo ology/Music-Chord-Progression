@@ -280,7 +280,7 @@ has graph => (
 
 =head2 verbose
 
-Show B<generate> and B<substitute> progress.
+Show the B<generate> and B<substitute> progress.
 
 =cut
 
