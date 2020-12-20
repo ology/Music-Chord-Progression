@@ -436,7 +436,7 @@ sub _next_successor {
     }
     elsif ($n == $self->max) {
         if ($self->resolve == 0) {
-            $s = $self->graph->random_successor(scalar keys %{ $self->net });
+            $s = $self->graph->random_successor($n - 1);
         }
         elsif ($self->resolve == 1) {
             $s = 1;
