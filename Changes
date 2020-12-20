@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Fix the chord_map in eg/progression.
+
+0.0500 2020-12-20 09:05:10
     - Add the 7th to the default net & chord_map.
     - Fix the "max random_successor" argument.
 
