@@ -11,7 +11,7 @@ use_ok 'Music::Chord::Progression';
 my $obj = new_ok 'Music::Chord::Progression' => [
     scale_note => 'A',
     scale_name => 'minor',
-    chord_map => ['m','m','','m','m','',''],
+    chord_map => ['m','dim','','m','m','',''],
 #    verbose => 1,
 ];
 my $expect = ['A4','C5','E5'];
