@@ -58,7 +58,8 @@ Default:
     3 => [qw( 1 2 4 6 )],
     4 => [qw( 1 3 5 6 )],
     5 => [qw( 1 4 6 )],
-    6 => [qw( 1 2 4 5 )] }
+    6 => [qw( 1 2 4 5 )],
+    7 => [] }
 
 Alternative example:
 
@@ -67,7 +68,8 @@ Alternative example:
     3 => [qw( 2 4 6 )],
     4 => [qw( 1 2 3 5 )],
     5 => [qw( 1 )],
-    6 => [qw( 2 4 )] }
+    6 => [qw( 2 4 )],
+    7 => [] }
 
 The keys must start with C<1> and be contiguous to the end.
 
@@ -100,7 +102,8 @@ has net => (
         3 => [qw( 1 2 4 6 )],
         4 => [qw( 1 3 5 6 )],
         5 => [qw( 1 4 6 )],
-        6 => [qw( 1 2 4 5 )] }
+        6 => [qw( 1 2 4 5 )],
+        7 => [] }
     },
 );
 
@@ -111,13 +114,13 @@ The chord names of each scale position.
 The number of items in this list must be equal and correspond to the
 number of keys in the B<net>.
 
-Default: C<[ '', 'm', 'm', '', '', 'm' ]>
+Default: C<[ '', 'm', 'm', '', '', 'm', 'dim' ]>
 
 Here C<''> refers to the major chord and C<'m'> means minor.
 
 Alternative example:
 
-  [ 'M7', 'm7', 'm7', 'M7', '7', 'm7' ]
+  [ 'M7', 'm7', 'm7', 'M7', '7', 'm7', 'dim7' ]
 
 The different chord names are listed in the source of L<Music::Chord::Note>.
 
@@ -126,7 +129,7 @@ The different chord names are listed in the source of L<Music::Chord::Note>.
 has chord_map => (
     is      => 'ro',
     isa     => sub { die "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
-    default => sub { ['', 'm', 'm', '', '', 'm'] },
+    default => sub { ['', 'm', 'm', '', '', 'm', 'dim'] },
 );
 
 =head2 scale_name
@@ -175,6 +178,7 @@ has scale => (
 sub _build_scale {
     my ($self) = @_;
     my @scale = get_scale_notes($self->scale_note, $self->scale_name);
+    print 'Scale: ', ddc(\@scale) if $self->verbose;
     return \@scale;
 }
 
@@ -473,7 +477,10 @@ sub _tt_sub {
         $note = $self->scale->[$n - 1];
     }
 
-    return $note . $chord_map->[$n - 1];
+    $note .= $chord_map->[$n - 1];
+    print "Note: $note\n" if $self->verbose;
+
+    return $note;
 }
 
 =head2 substitution
