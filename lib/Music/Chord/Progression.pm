@@ -367,7 +367,7 @@ sub generate {
         $v = $self->_next_successor($n, $v);
         push @progression, $v if $v; # XXX Is this right?
     }
-    print "Progression: @progression\n" if $self->verbose;
+    print 'Progression: ', ddc(\@progression) if $self->verbose;
 
     my @chord_map = @{ $self->chord_map };
 
@@ -382,9 +382,10 @@ sub generate {
             $i++;
         }
     }
+    print 'Chord map: ', ddc(\@chord_map) if $self->verbose;
 
     my @phrase = map { $self->_tt_sub(\@chord_map, $_) } @progression;
-    print "Phrase: @phrase\n" if $self->verbose;
+    print 'Phrase: ', ddc(\@phrase) if $self->verbose;
 
     # Add octaves to the chords
     my $mcn = Music::Chord::Note->new;
