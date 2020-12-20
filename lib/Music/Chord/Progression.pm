@@ -365,7 +365,7 @@ sub generate {
     my $v; # Vertex
     for my $n (1 .. $self->max) {
         $v = $self->_next_successor($n, $v);
-        push @progression, $v;
+        push @progression, $v if $v;
     }
     print "Progression: @progression\n" if $self->verbose;
 
