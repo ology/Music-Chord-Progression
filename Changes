@@ -1,6 +1,10 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Add the 7th to the default net & chord_map.
+    - Fix the "max random_successor" argument.
+
+0.0401 2020-12-13 10:28:21
     - Fix verbose mode code.
 
 0.0400 2020-12-13 06:45:20
