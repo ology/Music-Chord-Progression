@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Use ddc() in ->verbose output.
 
 0.0501 2020-12-20 11:46:45
     - Fix the chord_map in eg/progression.
