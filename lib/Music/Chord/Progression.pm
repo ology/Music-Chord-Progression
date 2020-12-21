@@ -437,7 +437,7 @@ sub _next_successor {
     }
     elsif ($n == $self->max) {
         if ($self->resolve == 0) {
-            $s = $self->graph->random_successor($n - 1);
+            $s = $self->graph->random_successor($v) || $self->_full_keys;
         }
         elsif ($self->resolve == 1) {
             $s = 1;
