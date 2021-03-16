@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Update the eg/ programs.
+
+0.0502 2020-12-21 08:36:49
     - Use ddc() in ->verbose output.
     - Fix resolve == 0 logic.
 
