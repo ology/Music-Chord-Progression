@@ -43,7 +43,7 @@ Default: C<8>
 
 has max => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid integer" unless $_[0] =~ /^\d+$/ },
+    isa     => sub { croak "$_[0] is not a valid integer" unless $_[0] =~ /^\d+$/ },
     default => sub { 8 },
 );
 
@@ -95,7 +95,7 @@ chosen here:
 
 has net => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a hashref" unless ref $_[0] eq 'HASH' },
+    isa     => sub { croak "$_[0] is not a hashref" unless ref $_[0] eq 'HASH' },
     default => sub {
       { 1 => [qw( 1 2 3 4 5 6 )],
         2 => [qw( 3 4 5 )],
@@ -128,7 +128,7 @@ The different chord names are listed in the source of L<Music::Chord::Note>.
 
 has chord_map => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
+    isa     => sub { croak "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
     default => sub { ['', 'm', 'm', '', '', 'm', 'dim'] },
 );
 
@@ -144,7 +144,7 @@ Please see L<Music::Scales/SCALES> for the allowed scale names.
 
 has scale_name => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid string" if ref $_[0] },
+    isa     => sub { croak "$_[0] is not a valid string" if ref $_[0] },
     default => sub { 'major' },
 );
 
@@ -158,7 +158,7 @@ Default: C<C>
 
 has scale_note => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid note" unless $_[0] =~ /^[A-G][#b]?$/ },
+    isa     => sub { croak "$_[0] is not a valid note" unless $_[0] =~ /^[A-G][#b]?$/ },
     default => sub { 'C' },
 );
 
@@ -192,7 +192,7 @@ Default: C<4>
 
 has octave => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid octave" unless $_[0] =~ /^-?\d+$/ },
+    isa     => sub { croak "$_[0] is not a valid octave" unless $_[0] =~ /^-?\d+$/ },
     default => sub { 4 },
 );
 
@@ -210,7 +210,7 @@ Default: C<1>
 
 has tonic => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
+    isa     => sub { croak "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
     default => sub { 1 },
 );
 
@@ -228,7 +228,7 @@ Default: C<1>
 
 has resolve => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
+    isa     => sub { croak "$_[0] is not a valid setting" unless $_[0] =~ /^-?[01]$/ },
     default => sub { 1 },
 );
 
@@ -254,7 +254,7 @@ Rules:
 
 has substitute => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    isa     => sub { croak "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
     default => sub { 0 },
 );
 
@@ -269,7 +269,7 @@ Default: C<sub { int rand 4 == 0 }> (25% of the time)
 
 has sub_cond => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid coderef" unless ref($_[0]) eq 'CODE' },
+    isa     => sub { croak "$_[0] is not a valid coderef" unless ref($_[0]) eq 'CODE' },
     default => sub { return sub { int rand 4 == 0 } },
 );
 
@@ -283,7 +283,7 @@ Default: C<0>
 
 has flat => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    isa     => sub { croak "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
     default => sub { 0 },
 );
 
@@ -319,7 +319,7 @@ Show the B<generate> and B<substitution> progress.
 
 has verbose => (
     is      => 'ro',
-    isa     => sub { die "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
+    isa     => sub { croak "$_[0] is not a valid boolean" unless $_[0] =~ /^[01]$/ },
     default => sub { 0 },
 );
 
