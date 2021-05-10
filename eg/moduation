@@ -3,7 +3,6 @@ use strict;
 use warnings;
 
 use Data::Dumper::Compact 'ddc';
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(MIDI-Util);
 use MIDI::Util qw(setup_score midi_format);
 use Music::Chord::Progression;
 use Music::Scales qw(get_scale_notes);
