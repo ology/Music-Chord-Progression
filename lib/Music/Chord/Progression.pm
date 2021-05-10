@@ -313,7 +313,7 @@ sub _build_graph {
 
 =head2 verbose
 
-Show the B<generate> and B<substitute> progress.
+Show the B<generate> and B<substitution> progress.
 
 =cut
 
