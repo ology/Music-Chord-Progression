@@ -21,8 +21,8 @@ for my $note (@notes) {
     my $chords = $prog->generate;
 
     for my $chord (@$chords) {
-        $chord = [ midi_format(@$chord) ];
-        $score->n('wn', @$chord);
+        my @chord = midi_format(@$chord);
+        $score->n('wn', @chord);
     }
     print $note, ': ', ddc($chords);
 }
