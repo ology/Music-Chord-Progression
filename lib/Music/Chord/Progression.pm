@@ -128,7 +128,7 @@ The different chord names are listed in the source of L<Music::Chord::Note>.
 
 has chord_map => (
     is      => 'ro',
-    isa     => sub { croak "$_[0] is not a arrayref" unless ref $_[0] eq 'ARRAY' },
+    isa     => sub { croak "$_[0] is not an arrayref" unless ref $_[0] eq 'ARRAY' },
     default => sub { ['', 'm', 'm', '', '', 'm', 'dim'] },
 );
 
