@@ -61,7 +61,7 @@ Default:
     6 => [qw( 1 2 4 5 )],
     7 => [] }
 
-Alternative example:
+Another example:
 
   { 1  => [qw( 1 .. 12 )],
     2  => [qw( 1 .. 11 )],
