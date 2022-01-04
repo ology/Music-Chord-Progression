@@ -2,7 +2,7 @@ package Music::Chord::Progression;
 
 # ABSTRACT: Create network transition chord progressions
 
-our $VERSION = '0.0504';
+our $VERSION = '0.0600';
 
 use Carp qw(croak);
 use Data::Dumper::Compact qw(ddc);
@@ -306,6 +306,30 @@ sub _build_graph {
     return $g;
 }
 
+=head2 phrase
+
+The generated phrase of named chords.  This is a computed attribute.
+
+=cut
+
+has phrase => (
+    is        => 'rw',
+    init_args => undef,
+);
+
+=head2 chords
+
+The generated phrase of individual note chords.  This is a computed
+attribute.
+
+=cut
+
+has chords => (
+    is        => 'rw',
+    init_args => undef,
+);
+
+
 =head2 verbose
 
 Show the B<generate> and B<substitution> progress.
@@ -380,7 +404,8 @@ sub generate {
     print 'Chord map: ', ddc(\@chord_map) if $self->verbose;
 
     my @phrase = map { $self->_tt_sub(\@chord_map, $_) } @progression;
-    print 'Phrase: ', ddc(\@phrase) if $self->verbose;
+    $self->phrase(\@phrase);
+    print 'Phrase: ', ddc($self->phrase) if $self->verbose;
 
     # Add octaves to the chords
     my $mcn = Music::Chord::Note->new;
@@ -407,7 +432,8 @@ sub generate {
         }
     }
 
-    print 'Chords: ', ddc(\@chords) if $self->verbose;
+    $self->chords(\@chords);
+    print 'Chords: ', ddc($self->chords) if $self->verbose;
 
     return \@chords;
 }

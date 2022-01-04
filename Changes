@@ -1,6 +1,9 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Added phrase and chords attributes.
+
+0.0504 2022-01-03 21:35:41
     - Improve documentation.
 
 0.0503 2021-05-10 09:39:43
