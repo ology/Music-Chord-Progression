@@ -63,13 +63,19 @@ Default:
 
 Alternative example:
 
-  { 1 => [qw( 1 2 3 4 5 6 )],
-    2 => [qw( 3 5 )],
-    3 => [qw( 2 4 6 )],
-    4 => [qw( 1 2 3 5 )],
-    5 => [qw( 1 )],
-    6 => [qw( 2 4 )],
-    7 => [] }
+  { 1  => [qw( 1 .. 12 )],
+    2  => [qw( 1 .. 11 )],
+    3  => [qw( 1 .. 10 )],
+    4  => [qw( 1 .. 9 )],
+    5  => [qw( 1 .. 8 )],
+    6  => [qw( 1 .. 7 )],
+    7  => [qw( 1 .. 6 )],
+    8  => [qw( 1 .. 5 )],
+    9  => [qw( 1 .. 4 )],
+    10 => [qw( 1 .. 3 )],
+    11 => [qw( 1 .. 2 )],
+    12 => [qw( 1 )],
+  }
 
 The keys must start with C<1> and be contiguous to the end.
 
@@ -77,10 +83,8 @@ Ending on C<12> keys all the notes of the chromatic scale.  Ending on
 C<7> represents diatonic notes, given the B<scale_name>.
 
 If you do not wish a scale note to be chosen, include it among the
-keys, but do not refer to it and do not give it any neighbors.
-
-For example, the chord for the 7th degree of the scale will not be
-chosen above.
+keys, but do not refer to it and do not give it any neighbors.  Thus,
+in the first example, the 7th degree of the scale will never be chosen.
 
 =cut
 
