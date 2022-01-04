@@ -510,7 +510,7 @@ sub _tt_sub {
 
   $substitute = $prog->substitution($chord_name);
 
-Perform a jazz substitution on the given the B<chord_name>.
+Perform a jazz substitution on the given the named chord.
 
 =cut
 
