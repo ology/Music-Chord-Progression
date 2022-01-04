@@ -80,16 +80,8 @@ B<scale_name>.
 If you do not wish a scale note to be chosen, include it among the
 keys, but do not refer to it and do not give it any neighbors.
 
-For example, the chord for the 5th degree of the scale will not be
-chosen here:
-
-  { 1 => [qw( 1 2 3 4 6 7)],
-    2 => [qw( 3 )],
-    3 => [qw( 2 4 6 )],
-    4 => [qw( 1 2 3 )],
-    5 => [],
-    6 => [qw( 2 4 )],
-    7 => [qw( 1 4 )] }
+For example, the chord for the 7th degree of the scale will not be
+chosen above.
 
 =cut
 
