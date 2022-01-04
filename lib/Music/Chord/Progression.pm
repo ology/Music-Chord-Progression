@@ -367,7 +367,8 @@ Create a new C<Music::Chord::Progression> object.
 
   $chords = $prog->generate;
 
-Generate a fresh chord progression.
+Generate a fresh chord progression and set the B<phrase> and B<chords>
+attributes.
 
 =cut
 
