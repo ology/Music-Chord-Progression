@@ -26,6 +26,7 @@ $got = $obj->generate;
 is scalar @$got, $obj->max, 'generate';
 is_deeply $got->[0], $expect, 'generate';
 is_deeply $got->[-1], $expect, 'generate';
+is_deeply $got, $obj->chords, 'generate';
 
 is @{ $obj->phrase }, $obj->max, 'phrase length';
 is @{ $obj->chords }, $obj->max, 'chords length';
