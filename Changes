@@ -2,6 +2,7 @@ Revision history for Music-Chord-Progression
 
 {{$NEXT}}
     - Improve documentation.
+    - Test that the return of the generate method equals the chords.
 
 0.0600 2022-01-04 11:22:53
     - Add phrase and chords attributes.
