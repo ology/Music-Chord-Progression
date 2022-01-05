@@ -286,7 +286,7 @@ has flat => (
 
 The network transition L<Graph> object.  This is a computed attribute.
 
-Default: C<Graph::Directed>
+Default: C<Graph::Directed-E<gt>new>
 
 =cut
 
