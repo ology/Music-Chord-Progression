@@ -194,7 +194,7 @@ has octave => (
 
 =head2 tonic
 
-Whether to start the progression with the tonic chord or not.
+Set the start of the progression.
 
 If this is given as C<1> the tonic chord starts the progression.  If
 given as C<0> a neighbor of the tonic is chosen.  If given as C<-1> a
@@ -212,7 +212,7 @@ has tonic => (
 
 =head2 resolve
 
-Whether to end the progression with the tonic chord or not.
+Set the end the progression.
 
 If this is given as C<1> the tonic chord ends the progression.  If
 given as C<0> a neighbor of the last chord is chosen.  If given as
