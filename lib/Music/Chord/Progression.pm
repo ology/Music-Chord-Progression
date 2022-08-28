@@ -7,8 +7,8 @@ our $VERSION = '0.0602';
 use Carp qw(croak);
 use Data::Dumper::Compact qw(ddc);
 use Graph::Directed;
-use Music::Scales qw(get_scale_notes);
 use Music::Chord::Note;
+use Music::Scales qw(get_scale_notes);
 use Moo;
 use strictures 2;
 use namespace::clean;
@@ -28,14 +28,14 @@ use namespace::clean;
 C<Music::Chord::Progression> creates network transition chord
 progressions.
 
-Also this module can perform limited jazz chord substitutions, if
+This module can also perform limited jazz chord substitutions, if
 requested in the constructor.
 
 =head1 ATTRIBUTES
 
 =head2 max
 
-The maximum number of chords to generate.
+The number of chords to generate in a phrase.
 
 Default: C<8>
 
@@ -61,20 +61,20 @@ Default:
     6 => [qw( 1 2 4 5 )],
     7 => [] }
 
-A chromatic example:
+A contrived chromatic example where each note connects to every note:
 
   { 1  => [1 .. 12],
-    2  => [1 .. 11],
-    3  => [1 .. 10],
-    4  => [1 .. 9],
-    5  => [1 .. 8],
-    6  => [1 .. 7],
-    7  => [1 .. 6],
-    8  => [1 .. 5],
-    9  => [1 .. 4],
-    10 => [1 .. 3],
-    11 => [1 .. 2],
-    12 => [1],
+    2  => [1 .. 12],
+    3  => [1 .. 12],
+    4  => [1 .. 12],
+    5  => [1 .. 12],
+    6  => [1 .. 12],
+    7  => [1 .. 12],
+    8  => [1 .. 12],
+    9  => [1 .. 12],
+    10 => [1 .. 12],
+    11 => [1 .. 12],
+    12 => [1 .. 12],
   }
 
 The keys must start with C<1> and be contiguous to the end.
@@ -106,8 +106,8 @@ has net => (
 
 The chord names of each scale position.
 
-The number of items in this list must be equal and correspond to the
-number of keys in the B<net>.
+The number of items in this list must be equal to the number of keys
+in the B<net>.
 
 Default: C<[ '', 'm', 'm', '', '', 'm', 'dim' ]>
 
@@ -117,7 +117,7 @@ Alternative example:
 
   [ 'M7', 'm7', 'm7', 'M7', '7', 'm7', 'dim7' ]
 
-The different chord names are listed in the source of L<Music::Chord::Note>.
+The known chord names are listed in the source of L<Music::Chord::Note>.
 
 =cut
 
@@ -145,7 +145,8 @@ has scale_name => (
 
 =head2 scale_note
 
-The (uppercase) name of the scale starting note.
+The (uppercase) name of the scale starting note with an optional C<#>
+or C<b> accidental.
 
 Default: C<C>
 
@@ -179,7 +180,7 @@ sub _build_scale {
 
 =head2 octave
 
-The octave number of the scale.
+The octave of the scale.
 
 Default: C<4>
 
@@ -229,7 +230,7 @@ has resolve => (
 
 =head2 substitute
 
-Whether to perform jazz chord substitution.
+Perform jazz chord substitution.
 
 Default: C<0>
 
@@ -255,8 +256,7 @@ has substitute => (
 
 =head2 sub_cond
 
-The subroutine to execute to determine if a chord substitution should
-happen.
+The subroutine to determine if a chord substitution should happen.
 
 Default: C<sub { int rand 4 == 0 }> (25% of the time)
 
@@ -270,7 +270,7 @@ has sub_cond => (
 
 =head2 flat
 
-Whether to use flats instead of sharps in the generated chords or not.
+Use flats instead of sharps in the generated chords.
 
 Default: C<0>
 
@@ -332,7 +332,7 @@ has chords => (
 
 =head2 verbose
 
-Show the B<generate> and B<substitution> progress.
+Show the progress and chosen values.
 
 =cut
 
@@ -508,13 +508,12 @@ sub _tt_sub {
 
 =head2 substitution
 
-  $substitute = $prog->substitution($chord_name);
+  $substitute = $prog->substitution($chord_type);
 
-Perform a jazz substitution on the given the named chord.
+Perform a jazz substitution on the given the chord type.
 
 =cut
 
-# These gymnastics are performed to appease Music::Chord::Note
 sub substitution {
     my ($self, $chord) = @_;
 
