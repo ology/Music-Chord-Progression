@@ -24,6 +24,7 @@ use namespace::clean;
 
   my $progression = $prog->generate;
 
+  my $score = setup_score();
   for my $chord (@$progression) {
       $score->n('wn', midi_format(@$chord));
   }
