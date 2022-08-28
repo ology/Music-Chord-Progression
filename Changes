@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Improve documentation.
 
 0.0602 2022-01-05 22:33:08
     - Appease Win32 by declaring Set::Object as a prereq, because it barfs.
