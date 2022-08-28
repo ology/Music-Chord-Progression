@@ -16,12 +16,17 @@ use namespace::clean;
 =head1 SYNOPSIS
 
   use Music::Chord::Progression;
+  use MIDI::Util qw(setup_score midi_format);
 
   my $prog = Music::Chord::Progression->new;
 
-  my $chords = $prog->generate; # LoL with "max" number of bars
-
   my $chord_type = $prog->substitution('m'); # returns m7 or mM7
+
+  my $progression = $prog->generate; # LoL with "max" number of bars
+
+  for my $chord (@$progression) {
+      $score->n('wn', midi_format(@$chord));
+  }
 
 =head1 DESCRIPTION
 
@@ -357,6 +362,7 @@ has verbose => (
     octave     => 5,
     tonic      => 0,
     resolve    => -1,
+    flat       => 1,
     substitute => 1,
     verbose    => 1,
   );
