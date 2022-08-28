@@ -19,9 +19,9 @@ use namespace::clean;
 
   my $prog = Music::Chord::Progression->new;
 
-  my $chords = $prog->generate;
+  my $chords = $prog->generate; # LoL with "max" number of bars
 
-  my $chord = $prog->substitution('m'); # returns m7 or mM7
+  my $chord_type = $prog->substitution('m'); # returns m7 or mM7
 
 =head1 DESCRIPTION
 
