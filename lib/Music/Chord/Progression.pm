@@ -218,7 +218,7 @@ has tonic => (
 
 =head2 resolve
 
-Set the end the progression.
+Set the end of the progression.
 
 If this is given as C<1> the tonic chord ends the progression.  If
 given as C<0> a neighbor of the last chord is chosen.  If given as
