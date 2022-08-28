@@ -20,9 +20,9 @@ use namespace::clean;
 
   my $prog = Music::Chord::Progression->new;
 
-  my $chord_type = $prog->substitution('m'); # returns m7 or mM7
+  my $chord_type = $prog->substitution('m'); # m7 or mM7
 
-  my $progression = $prog->generate; # LoL with "max" number of bars
+  my $progression = $prog->generate;
 
   for my $chord (@$progression) {
       $score->n('wn', midi_format(@$chord));
