@@ -51,6 +51,15 @@ has max => (
 
 The network transitions between chords of the progression.
 
+The keys must start with C<1> and be contiguous to the end.
+
+Ending on C<12> keys all the notes of the chromatic scale.  Ending on
+C<7> represents diatonic notes, given the B<scale_name>.
+
+If you do not wish a scale note to be chosen, include it among the
+keys, but do not refer to it and do not give it any neighbors.  Thus,
+in the first example, the 7th degree of the scale will never be chosen.
+
 Default:
 
   { 1 => [qw( 1 2 3 4 5 6 )],
@@ -76,15 +85,6 @@ A contrived chromatic example where each note connects to every note:
     11 => [1 .. 12],
     12 => [1 .. 12],
   }
-
-The keys must start with C<1> and be contiguous to the end.
-
-Ending on C<12> keys all the notes of the chromatic scale.  Ending on
-C<7> represents diatonic notes, given the B<scale_name>.
-
-If you do not wish a scale note to be chosen, include it among the
-keys, but do not refer to it and do not give it any neighbors.  Thus,
-in the first example, the 7th degree of the scale will never be chosen.
 
 =cut
 
