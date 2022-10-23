@@ -2,7 +2,7 @@ package Music::Chord::Progression;
 
 # ABSTRACT: Create network transition chord progressions
 
-our $VERSION = '0.0604';
+our $VERSION = '0.0605';
 
 use Moo;
 use strictures 2;
