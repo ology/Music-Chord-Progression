@@ -4,13 +4,15 @@ package Music::Chord::Progression;
 
 our $VERSION = '0.0604';
 
-use Carp qw(croak);
-use Data::Dumper::Compact qw(ddc);
-use Graph::Directed;
-use Music::Chord::Note;
-use Music::Scales qw(get_scale_notes);
 use Moo;
 use strictures 2;
+
+use Carp qw(croak);
+use Data::Dumper::Compact qw(ddc);
+use Graph::Directed ();
+use Music::Chord::Note ();
+use Music::Scales qw(get_scale_notes);
+
 use namespace::clean;
 
 =head1 SYNOPSIS
