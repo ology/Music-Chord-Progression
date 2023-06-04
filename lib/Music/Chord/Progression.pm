@@ -201,7 +201,7 @@ sub _build_scale {
     for (@scale) {
         $_ = $equiv{$_} if exists $equiv{$_};
     }
-    print 'Scale: ', ddc(\@scale) if $self->verbose;
+    print ucfirst($self->scale_name), ' scale: ', ddc(\@scale) if $self->verbose;
     return \@scale;
 }
 
