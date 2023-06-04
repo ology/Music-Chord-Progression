@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Show the scale name in verbose mode.
 
 0.0606 2023-06-04 15:36:03
     - Add an inelegant loop in the scale builder routine, to avoid weird notes.
