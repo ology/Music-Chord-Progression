@@ -182,6 +182,25 @@ has scale => (
 sub _build_scale {
     my ($self) = @_;
     my @scale = get_scale_notes($self->scale_note, $self->scale_name);
+    my %equiv = (
+        'C#'  => 'Db',
+        'D#'  => 'Eb',
+        'E#'  => 'F',
+        'F#'  => 'Gb',
+        'G#'  => 'Ab',
+        'A#'  => 'Bb',
+        'B#'  => 'C',
+        'Cb'  => 'B',
+        'Dbb' => 'C',
+        'Ebb' => 'D',
+        'Fb'  => 'E',
+        'Gbb' => 'F',
+        'Abb' => 'G',
+        'Bbb' => 'A',
+    );
+    for (@scale) {
+        $_ = $equiv{$_} if exists $equiv{$_};
+    }
     print 'Scale: ', ddc(\@scale) if $self->verbose;
     return \@scale;
 }
