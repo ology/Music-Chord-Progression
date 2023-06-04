@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Add an inelegant loop in the scale builder routine, to avoid weird notes.
 
 0.0605 2022-10-23 12:28:31
     - Avoid implicit imports.
