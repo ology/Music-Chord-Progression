@@ -134,7 +134,8 @@ has chord_map => (
 );
 sub _build_chord_map {
     my ($self) = @_;
-    my %modes = (
+    my %scale = (
+        chromatic  => [ ('m') x 12 ],
         major      => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
         ionian     => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
         dorian     => [ 'm',   'm',   '',    '',    'm',   'dim', ''    ],
@@ -145,7 +146,7 @@ sub _build_chord_map {
         aeolian    => [ 'm',   'dim', '',    'm',   'm',   '',    ''    ],
         locrian    => [ 'dim', '',    'm',   'm',   '',    '',    'm'   ],
     );
-    return $modes{ $self->scale_name };
+    return $scale{ $self->scale_name };
 }
 
 =head2 scale_name
