@@ -121,6 +121,22 @@ Default: C<[ '', 'm', 'm', '', '', 'm', 'dim' ]> (major scale)
 
 Here C<''> refers to the major chord and C<'m'> means minor.
 
+Here are the known chord mappings:
+
+  chromatic  => [ ('m') x 12 ],
+  major      => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
+  ionian     => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
+  dorian     => [ 'm',   'm',   '',    '',    'm',   'dim', ''    ],
+  phrygian   => [ 'm',   '',    '',    'm',   'dim', '',    'm'   ],
+  lydian     => [ '',    '',    'm',   'dim', '',    'm',   'm'   ],
+  mixolydian => [ '',    'm',   'dim', '',    'm',   'm',   ''    ],
+  minor      => [ 'm',   'dim', '',    'm',   'm',   '',    ''    ],
+  aeolian    => [ 'm',   'dim', '',    'm',   'm',   '',    ''    ],
+  locrian    => [ 'dim', '',    'm',   'm',   '',    '',    'm'   ],
+
+If B<chord_map>  is not defined and a known B<scale_name> is given to
+the constructor, the corresponding B<chord_map> above, will be used.
+
 Alternative example:
 
   [ 'M7', 'm7', 'm7', 'M7', '7', 'm7', 'dim7' ]
