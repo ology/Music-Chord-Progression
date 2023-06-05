@@ -1,6 +1,8 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+
+0.0608 2023-06-04 20:10:06
     - Honor the scale mode when building the chord_map.
 
 0.0607 2023-06-04 15:50:16
