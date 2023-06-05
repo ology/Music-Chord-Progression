@@ -117,7 +117,7 @@ The chord names of each scale position.
 The number of items in this list must be equal to the number of keys
 in the B<net>.
 
-Default: C<[ '', 'm', 'm', '', '', 'm', 'dim' ]>
+Default: C<[ '', 'm', 'm', '', '', 'm', 'dim' ]> (major scale)
 
 Here C<''> refers to the major chord and C<'m'> means minor.
 
@@ -130,10 +130,23 @@ The known chord names are listed in the source of L<Music::Chord::Note>.
 =cut
 
 has chord_map => (
-    is      => 'ro',
-    isa     => sub { croak "$_[0] is not an arrayref" unless ref $_[0] eq 'ARRAY' },
-    default => sub { ['', 'm', 'm', '', '', 'm', 'dim'] },
+    is => 'lazy',
 );
+sub _build_chord_map {
+    my ($self) = @_;
+    my %modes = (
+        major      => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
+        ionian     => [ '',    'm',   'm',   '',    '',    'm',   'dim' ],
+        dorian     => [ 'm',   'm',   '',    '',    'm',   'dim', ''    ],
+        phrygian   => [ 'm',   '',    '',    'm',   'dim', '',    'm'   ],
+        lydian     => [ '',    '',    'm',   'dim', '',    'm',   'm'   ],
+        mixolydian => [ '',    'm',   'dim', '',    'm',   'm',   ''    ],
+        minor      => [ 'm',   'dim', '',    'm',   'm',   '',    ''    ],
+        aeolian    => [ 'm',   'dim', '',    'm',   'm',   '',    ''    ],
+        locrian    => [ 'dim', '',    'm',   'm',   '',    '',    'm'   ],
+    );
+    return $modes{ $self->scale_name };
+}
 
 =head2 scale_name
 
