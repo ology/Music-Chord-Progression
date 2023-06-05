@@ -559,7 +559,7 @@ sub _tt_sub {
     }
 
     $note .= $chord_map->[$n - 1];
-    print "Note: $note\n" if $self->verbose;
+    #print "Note: $note\n" if $self->verbose;
 
     return $note;
 }
