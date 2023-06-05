@@ -1,6 +1,7 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+    - Use all minors for a chromatic scale.
 
 0.0608 2023-06-04 20:10:06
     - Honor the scale mode when building the chord_map.
