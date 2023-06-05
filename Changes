@@ -1,6 +1,8 @@
 Revision history for Music-Chord-Progression
 
 {{$NEXT}}
+
+0.0609 2023-06-04 20:54:48
     - Use all minors for a chromatic scale.
     - Improve documentation.
 
